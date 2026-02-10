@@ -35,7 +35,7 @@ class MenuController
     // Création (admin)
     public function create()
     {
-        requireRole(3); // admin uniquement
+        requireMinRole(2); // admin + employé
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->menuModel->create($_POST);

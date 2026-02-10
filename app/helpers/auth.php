@@ -18,11 +18,11 @@ function requireLogin()
     }
 }
 
-function requireRole($roleId)
+function requireMinRole($roleMin)
 {
     requireLogin();
 
-    if (!hasRole($roleId)) {
+    if ($_SESSION['user']['role'] < $roleMin) {
         echo "Accès refusé";
         exit;
     }

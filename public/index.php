@@ -5,9 +5,11 @@ require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../app/helpers/auth.php';
 require_once __DIR__ . '/../app/controllers/AuthController.php';
 require_once __DIR__ . '/../app/controllers/MenuController.php';
+require_once __DIR__ . '/../app/controllers/PlatController.php';
 
 $authController = new AuthController($pdo);
 $menuController = new MenuController($pdo);
+$platController = new PlatController($pdo);
 
 $page = $_GET['page'] ?? 'login';
 
@@ -87,6 +89,17 @@ if ($page === 'menu') {
 
 if ($page === 'menu-create') {
     $menuController->create();
+    exit;
+}
+
+// PLATS 
+if ($page === 'plats') {
+    $platController->index();
+    exit;
+}
+
+if ($page === 'plat-create') {
+    $platController->create();
     exit;
 }
 
