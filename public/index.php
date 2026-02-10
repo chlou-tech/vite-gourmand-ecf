@@ -3,19 +3,11 @@ session_start();
 
 require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../app/controllers/AuthController.php';
+require_once __DIR__ . '/../app/helpers/auth.php';
 
 $authController = new AuthController($pdo);
 
 $page = $_GET['page'] ?? 'login';
-
-// 🔐 Pages privées
-$protectedPages = ['home'];
-
-// 🔒 Si page protégée et pas connecté → login
-if (in_array($page, $protectedPages) && !isset($_SESSION['user'])) {
-    header('Location: index.php?page=login');
-    exit;
-}
 
 // 🔁 Si déjà connecté et essaie d’aller sur login/register → home
 if (isset($_SESSION['user']) && in_array($page, ['login', 'register'])) {
@@ -36,9 +28,46 @@ if ($page === 'register') {
 
 // 🏠 Accueil connecté
 if ($page === 'home') {
-    echo "<h1>Bienvenue, vous êtes connecté !</h1>";
+    requireLogin();
+
+    echo "<h1>Bienvenue</h1>";
     echo "<p>Email : " . htmlspecialchars($_SESSION['user']['email']) . "</p>";
+    echo "<p>Rôle : " . $_SESSION['user']['role'] . "</p>";
     echo "<a href='logout.php'>Se déconnecter</a>";
+    exit;
+}
+if ($_SESSION['user']['role'] == 1) {
+    echo "<p>Profil : Utilisateur</p>";
+}
+
+if ($_SESSION['user']['role'] == 2) {
+    echo "<p>Profil : Employé</p>";
+    echo "<a href='index.php?page=employe'>Accéder à l’espace employé</a><br>";
+}
+
+if ($_SESSION['user']['role'] == 3) {
+    echo "<p>Profil : Administrateur</p>";
+    echo "<a href='index.php?page=employe'>Espace employé</a><br>";
+    echo "<a href='index.php?page=admin'>Espace administrateur</a><br>";
+}
+
+// 🧑‍💼 Page employé 
+if ($page === 'employe') {
+    requireRole(2);
+
+    echo "<h1>Espace Employé</h1>";
+    echo "<p>Gestion des commandes</p>";
+    echo "<a href='index.php?page=home'>Accueil</a>";
+    exit;
+}
+
+// 👑 Page administrateur
+if ($page === 'admin') {
+    requireRole(3);
+
+    echo "<h1>Espace Administrateur</h1>";
+    echo "<p>Gestion des utilisateurs et statistiques</p>";
+    echo "<a href='index.php?page=home'>Accueil</a>";
     exit;
 }
 
