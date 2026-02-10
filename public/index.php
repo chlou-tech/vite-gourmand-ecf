@@ -2,10 +2,12 @@
 session_start();
 
 require_once __DIR__ . '/../config/database.php';
-require_once __DIR__ . '/../app/controllers/AuthController.php';
 require_once __DIR__ . '/../app/helpers/auth.php';
+require_once __DIR__ . '/../app/controllers/AuthController.php';
+require_once __DIR__ . '/../app/controllers/MenuController.php';
 
 $authController = new AuthController($pdo);
+$menuController = new MenuController($pdo);
 
 $page = $_GET['page'] ?? 'login';
 
@@ -32,23 +34,24 @@ if ($page === 'home') {
 
     echo "<h1>Bienvenue</h1>";
     echo "<p>Email : " . htmlspecialchars($_SESSION['user']['email']) . "</p>";
-    echo "<p>Rôle : " . $_SESSION['user']['role'] . "</p>";
-    echo "<a href='logout.php'>Se déconnecter</a>";
+
+    if ($_SESSION['user']['role'] == 1) {
+        echo "<p>Profil : Utilisateur</p>";
+    }
+
+    if ($_SESSION['user']['role'] == 2) {
+        echo "<p>Profil : Employé</p>";
+        echo "<a href='index.php?page=employe'>Espace employé</a><br>";
+    }
+
+    if ($_SESSION['user']['role'] == 3) {
+        echo "<p>Profil : Administrateur</p>";
+        echo "<a href='index.php?page=employe'>Espace employé</a><br>";
+        echo "<a href='index.php?page=admin'>Espace administrateur</a><br>";
+    }
+
+    echo "<br><a href='logout.php'>Se déconnecter</a>";
     exit;
-}
-if ($_SESSION['user']['role'] == 1) {
-    echo "<p>Profil : Utilisateur</p>";
-}
-
-if ($_SESSION['user']['role'] == 2) {
-    echo "<p>Profil : Employé</p>";
-    echo "<a href='index.php?page=employe'>Accéder à l’espace employé</a><br>";
-}
-
-if ($_SESSION['user']['role'] == 3) {
-    echo "<p>Profil : Administrateur</p>";
-    echo "<a href='index.php?page=employe'>Espace employé</a><br>";
-    echo "<a href='index.php?page=admin'>Espace administrateur</a><br>";
 }
 
 // 🧑‍💼 Page employé 
@@ -68,6 +71,22 @@ if ($page === 'admin') {
     echo "<h1>Espace Administrateur</h1>";
     echo "<p>Gestion des utilisateurs et statistiques</p>";
     echo "<a href='index.php?page=home'>Accueil</a>";
+    exit;
+}
+
+// 🍽️ MENUS 
+if ($page === 'menus') {
+    $menuController->index();
+    exit;
+}
+
+if ($page === 'menu') {
+    $menuController->show();
+    exit;
+}
+
+if ($page === 'menu-create') {
+    $menuController->create();
     exit;
 }
 
