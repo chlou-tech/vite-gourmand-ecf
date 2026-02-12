@@ -6,10 +6,12 @@ require_once __DIR__ . '/../app/helpers/auth.php';
 require_once __DIR__ . '/../app/controllers/AuthController.php';
 require_once __DIR__ . '/../app/controllers/MenuController.php';
 require_once __DIR__ . '/../app/controllers/PlatController.php';
+require_once __DIR__ . '/../app/controllers/CommandeController.php';
 
 $authController = new AuthController($pdo);
 $menuController = new MenuController($pdo);
 $platController = new PlatController($pdo);
+$commandeController = new CommandeController($pdo);
 
 $page = $_GET['page'] ?? 'login';
 
@@ -102,6 +104,33 @@ if ($page === 'plat-create') {
     $platController->create();
     exit;
 }
+
+// COMMANDES
+if ($page === 'commande-create') {
+    $commandeController->create();
+    exit;
+}
+
+if ($page === 'mes-commandes') {
+    $commandeController->mesCommandes();
+    exit;
+}
+
+if ($page === 'all-commandes') {
+    $commandeController->all();
+    exit;
+}
+
+// Statut de commande
+if ($page === 'commande-update-statut') {
+    $commandeController->updateStatut();
+    exit;
+}
+if ($page === 'commande-annuler') {
+    $commandeController->annuler();
+    exit;
+}
+
 
 // 🧭 Par défaut
 header('Location: index.php?page=login');
