@@ -12,6 +12,12 @@
                 Annuler
               </a>
         <?php endif; ?>
+        
+        <?php if ($commande['statut'] === 'livree'): ?>
+    | <a href="index.php?page=avis-create&id=<?= $commande['id_commande'] ?>">
+        Laisser un avis
+      </a>
+<?php endif; ?>
     </li>
 <?php endforeach; ?>
 

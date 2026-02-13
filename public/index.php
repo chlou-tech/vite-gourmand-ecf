@@ -7,11 +7,13 @@ require_once __DIR__ . '/../app/controllers/AuthController.php';
 require_once __DIR__ . '/../app/controllers/MenuController.php';
 require_once __DIR__ . '/../app/controllers/PlatController.php';
 require_once __DIR__ . '/../app/controllers/CommandeController.php';
+require_once __DIR__ . '/../app/controllers/AvisController.php';
 
 $authController = new AuthController($pdo);
 $menuController = new MenuController($pdo);
 $platController = new PlatController($pdo);
 $commandeController = new CommandeController($pdo);
+$avisController = new AvisController($pdo);
 
 $page = $_GET['page'] ?? 'login';
 
@@ -131,6 +133,21 @@ if ($page === 'commande-annuler') {
     exit;
 }
 
+// AVIS
+if ($page === 'avis-create') {
+    $avisController->create();
+    exit;
+}
+
+if ($page === 'all-avis') {
+    $avisController->all();
+    exit;
+}
+
+if ($page === 'avis-validate') {
+    $avisController->validate();
+    exit;
+}
 
 // 🧭 Par défaut
 header('Location: index.php?page=login');
