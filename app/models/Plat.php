@@ -30,20 +30,20 @@ class Plat
 
     // Création d’un plat
     public function create($data)
-    {
-        $stmt = $this->pdo->prepare("
-            INSERT INTO plat (nom, description, prix, actif)
-            VALUES (:nom, :description, :prix, 1)
-        ");
+{
+    $stmt = $this->pdo->prepare("
+        INSERT INTO plat (nom, type_plat, description)
+        VALUES (:nom, :type_plat, :description)
+    ");
 
-        $stmt->execute([
-            'nom' => $data['nom'],
-            'description' => $data['description'],
-            'prix' => $data['prix']
-        ]);
+    $stmt->execute([
+        'nom' => $data['nom'],
+        'type_plat' => $data['type_plat'],
+        'description' => $data['description']
+    ]);
 
-        return $this->pdo->lastInsertId();
-    }
+    return $this->pdo->lastInsertId();
+}
 
     // Lier un plat à un menu
     public function attachToMenu($idPlat, $idMenu)

@@ -3,10 +3,16 @@
 <ul>
 <?php foreach ($plats as $plat): ?>
     <li>
-        <?= htmlspecialchars($plat['nom']) ?> –
-        <?= htmlspecialchars($plat['prix']) ?> €
+    <strong><?= htmlspecialchars($plat['nom']) ?></strong>
+    (<?= htmlspecialchars($plat['type_plat']) ?>)
+
+        <?php if (!empty($plat['allergenes'])): ?>
+            <br>Allergènes :
+            <?php foreach ($plat['allergenes'] as $allergene): ?>
+                <?= htmlspecialchars($allergene['nom']) ?>
+            <?php endforeach; ?>
+        <?php endif; ?>
     </li>
+    <br>
 <?php endforeach; ?>
 </ul>
-
-<a href="index.php?page=plat-create">Créer un plat</a>
