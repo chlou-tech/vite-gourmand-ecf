@@ -8,14 +8,16 @@ require_once __DIR__ . '/../app/controllers/MenuController.php';
 require_once __DIR__ . '/../app/controllers/PlatController.php';
 require_once __DIR__ . '/../app/controllers/CommandeController.php';
 require_once __DIR__ . '/../app/controllers/AvisController.php';
+require_once __DIR__ . '/../app/controllers/ContactController.php';
 
 $authController = new AuthController($pdo);
 $menuController = new MenuController($pdo);
 $platController = new PlatController($pdo);
 $commandeController = new CommandeController($pdo);
 $avisController = new AvisController($pdo);
+$contactController = new ContactController();
 
-$page = $_GET['page'] ?? 'login';
+$page = $_GET['page'] ?? 'home';
 
 // 🔁 Si déjà connecté et essaie d’aller sur login/register → home
 if (isset($_SESSION['user']) && in_array($page, ['login', 'register'])) {
@@ -36,27 +38,12 @@ if ($page === 'register') {
 
 // 🏠 Accueil connecté
 if ($page === 'home') {
-    requireLogin();
+    require_once __DIR__ . '/../app/controllers/AvisController.php';
+    $avisController = new AvisController($pdo);
 
-    echo "<h1>Bienvenue</h1>";
-    echo "<p>Email : " . htmlspecialchars($_SESSION['user']['email']) . "</p>";
+    $avisValides = $avisController->getValidated();
 
-    if ($_SESSION['user']['role'] == 1) {
-        echo "<p>Profil : Utilisateur</p>";
-    }
-
-    if ($_SESSION['user']['role'] == 2) {
-        echo "<p>Profil : Employé</p>";
-        echo "<a href='index.php?page=employe'>Espace employé</a><br>";
-    }
-
-    if ($_SESSION['user']['role'] == 3) {
-        echo "<p>Profil : Administrateur</p>";
-        echo "<a href='index.php?page=employe'>Espace employé</a><br>";
-        echo "<a href='index.php?page=admin'>Espace administrateur</a><br>";
-    }
-
-    echo "<br><a href='logout.php'>Se déconnecter</a>";
+    require __DIR__ . '/../app/views/home.php';
     exit;
 }
 
@@ -146,6 +133,23 @@ if ($page === 'all-avis') {
 
 if ($page === 'avis-validate') {
     $avisController->validate();
+    exit;
+}
+
+// Mentions légales et CGV
+if ($page === 'mentions-legales') {
+    require __DIR__ . '/../app/views/mentions-legales.php';
+    exit;
+}
+
+if ($page === 'cgv') {
+    require __DIR__ . '/../app/views/cgv.php';
+    exit;
+}
+
+// Contact
+if ($page === 'contact') {
+    $contactController->index();
     exit;
 }
 

@@ -61,4 +61,9 @@ class AvisController
         header('Location: index.php?page=all-avis');
         exit;
     }
+
+    public function getValidated()
+    {
+        return $this->avisModel->getValidated();
+    }
 }

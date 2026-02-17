@@ -14,7 +14,11 @@ class MenuController
     // Liste des menus
     public function index()
     {
-        $menus = $this->menuModel->getAll();
+        if (!empty($_GET)) {
+            $menus = $this->menuModel->filter($_GET);
+            } else {
+                $menus = $this->menuModel->getAll();
+                }
         require __DIR__ . '/../views/menus/index.php';
     }
 
@@ -45,4 +49,5 @@ class MenuController
 
         require __DIR__ . '/../views/menus/create.php';
     }
+
 }

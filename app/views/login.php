@@ -1,26 +1,25 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Connexion</title>
-</head>
-<body>
+<?php require __DIR__ . '/layout/header.php'; ?>
 
-<h1>Connexion</h1>
+<section>
 
-<?php if (!empty($error)) : ?>
-    <p style="color:red"><?= htmlspecialchars($error) ?></p>
-<?php endif; ?>
+    <h2 class="page-title">Connexion</h2>
 
-<form method="post">
-    <label>Email</label><br>
-    <input type="email" name="email" required><br><br>
+    <div class="auth-container">
 
-    <label>Mot de passe</label><br>
-    <input type="password" name="password" required><br><br>
+        <form method="post" class="auth-form">
 
-    <button type="submit">Se connecter</button>
-</form>
+            <label>Email :</label>
+            <input type="email" name="email" required>
 
-</body>
-</html>
+            <label>Mot de passe :</label>
+            <input type="password" name="password" required>
+
+            <button type="submit" class="btn">Se connecter</button>
+
+        </form>
+
+    </div>
+
+</section>
+
+<?php require __DIR__ . '/layout/footer.php'; ?>

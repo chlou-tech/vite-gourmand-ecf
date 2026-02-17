@@ -1,40 +1,31 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Inscription</title>
-</head>
-<body>
+<?php require __DIR__ . '/layout/header.php'; ?>
 
-<h1>Créer un compte</h1>
+<section>
 
-<?php if (!empty($error)) : ?>
-    <p style="color:red"><?= htmlspecialchars($error) ?></p>
-<?php endif; ?>
+    <h2 class="page-title">Inscription</h2>
 
-<form method="post">
-    <label>Nom</label><br>
-    <input type="text" name="nom" required><br><br>
+    <div class="auth-container">
 
-    <label>Prénom</label><br>
-    <input type="text" name="prenom" required><br><br>
+        <form method="post" class="auth-form">
 
-    <label>Email</label><br>
-    <input type="email" name="email" required><br><br>
+            <label>Nom :</label>
+            <input type="text" name="nom" required>
 
-    <label>Mot de passe</label><br>
-    <input type="password" name="password" required><br><br>
+            <label>Prénom :</label>
+            <input type="text" name="prenom" required>
 
-    <label>Confirmation du mot de passe</label><br>
-    <input type="password" name="password_confirm" required><br><br>
+            <label>Email :</label>
+            <input type="email" name="email" required>
 
-    <button type="submit">S’inscrire</button>
-</form>
+            <label>Mot de passe :</label>
+            <input type="password" name="mot_de_passe" required>
 
-<p>
-    Déjà un compte ?
-    <a href="/Vite&Gourmand/public/index.php?page=login">Se connecter</a>
-</p>
+            <button type="submit" class="btn">S’inscrire</button>
 
-</body>
-</html>
+        </form>
+
+    </div>
+
+</section>
+
+<?php require __DIR__ . '/layout/footer.php'; ?>

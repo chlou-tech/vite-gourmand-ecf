@@ -40,4 +40,36 @@ class Menu
 
         return $stmt->execute($data);
     }
+
+    // Filtrer les menus
+    public function filter($filters)
+{
+    $sql = "SELECT * FROM menu WHERE 1=1";
+    $params = [];
+
+    if (!empty($filters['prix_max'])) {
+        $sql .= " AND prix_base <= :prix_max";
+        $params['prix_max'] = $filters['prix_max'];
+    }
+
+    if (!empty($filters['theme'])) {
+        $sql .= " AND theme = :theme";
+        $params['theme'] = $filters['theme'];
+    }
+
+    if (!empty($filters['regime'])) {
+        $sql .= " AND regime = :regime";
+        $params['regime'] = $filters['regime'];
+    }
+
+    if (!empty($filters['nb_personnes_min'])) {
+        $sql .= " AND nb_personnes_min >= :nb";
+        $params['nb'] = $filters['nb_personnes_min'];
+    }
+
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute($params);
+
+    return $stmt->fetchAll();
+}
 }
