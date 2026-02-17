@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../models/Commande.php';
 require_once __DIR__ . '/../models/Menu.php';
+require_once __DIR__ . '/../helpers/auth.php';
 
 class CommandeController
 {
@@ -18,6 +19,7 @@ class CommandeController
     public function create()
     {
         requireLogin();
+        requireMinRole(1);
 
         $menus = $this->menuModel->getAll();
 

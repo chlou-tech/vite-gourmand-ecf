@@ -9,7 +9,7 @@
     </p>
 
     <p>
-        Les commandes doivent être effectuées au minimum 7 jours avant la prestation.
+        Les commandes doivent être effectuées au minimum 3 jours avant la prestation.
     </p>
 
     <p>

@@ -1,35 +1,42 @@
-<h1>Créer un plat</h1>
+<?php require __DIR__ . '/../layout/header.php'; ?>
+
+<h1 class="page-title">Créer un plat</h1>
+
+<div class="form-container">
 
 <form method="post">
 
-<h3>Informations du plat</h3>
+    <label>Nom du plat :</label>
+    <input type="text" name="nom" required>
 
-<label>Nom du plat :</label><br>
-<input type="text" name="nom" required><br><br>
+    <label>Type de plat :</label>
+    <input type="text" name="type_plat" required>
 
-<label>Type de plat :</label><br>
-<input type="text" name="type_plat" required><br><br>
+    <label>Description :</label>
+    <textarea name="description"></textarea>
 
-<label>Description :</label><br>
-<textarea name="description"></textarea><br><br>
+    <h3>Associer à des menus</h3>
 
-<h3>Associer à des menus</h3>
-<?php foreach ($menus as $menu): ?>
-    <label>
-        <input type="checkbox" name="menus[]" value="<?= $menu['id_menu'] ?>">
-        <?= htmlspecialchars($menu['titre']) ?>
-    </label><br>
-<?php endforeach; ?>
+    <?php foreach ($menus as $menu): ?>
+        <label>
+            <input type="checkbox" name="menus[]" value="<?= $menu['id_menu'] ?>">
+            <?= htmlspecialchars($menu['titre']) ?>
+        </label><br>
+    <?php endforeach; ?>
 
-<h3>Allergènes</h3>
-<?php foreach ($allergenes as $allergene): ?>
-    <label>
-        <input type="checkbox" name="allergenes[]" value="<?= $allergene['id_allergene'] ?>">
-        <?= htmlspecialchars($allergene['nom']) ?>
-    </label><br>
-<?php endforeach; ?>
+    <h3>Allergènes</h3>
 
-<br>
-<button type="submit">Créer</button>
+    <?php foreach ($allergenes as $allergene): ?>
+        <label>
+            <input type="checkbox" name="allergenes[]" value="<?= $allergene['id_allergene'] ?>">
+            <?= htmlspecialchars($allergene['nom']) ?>
+        </label><br>
+    <?php endforeach; ?>
+
+    <button type="submit" class="btn-primary">Créer</button>
 
 </form>
+
+</div>
+
+<?php require __DIR__ . '/../layout/footer.php'; ?>

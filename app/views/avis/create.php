@@ -1,13 +1,30 @@
-<h1>Laisser un avis</h1>
+<?php require __DIR__ . '/../layout/header.php'; ?>
 
-<form method="post">
+<h1 class="page-title">Laisser un avis</h1>
 
-<label>Note (1 à 5) :</label><br>
-<input type="number" name="note" min="1" max="5" required><br><br>
+<div class="form-container">
 
-<label>Commentaire :</label><br>
-<textarea name="commentaire"></textarea><br><br>
+    <form method="post">
 
-<button type="submit">Envoyer</button>
+        <label>Note</label>
+        <select name="note" required>
+            <option value="">Choisir une note</option>
+            <option value="1">1 ⭐</option>
+            <option value="2">2 ⭐⭐</option>
+            <option value="3">3 ⭐⭐⭐</option>
+            <option value="4">4 ⭐⭐⭐⭐</option>
+            <option value="5">5 ⭐⭐⭐⭐⭐</option>
+        </select>
 
-</form>
+        <label>Commentaire</label>
+        <textarea name="commentaire" rows="4" required></textarea>
+
+        <button type="submit" class="btn-primary">
+            Envoyer l’avis
+        </button>
+
+    </form>
+
+</div>
+
+<?php require __DIR__ . '/../layout/footer.php'; ?>

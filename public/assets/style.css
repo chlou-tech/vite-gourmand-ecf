@@ -166,3 +166,184 @@ footer {
     margin: 40px 0 20px 0;
     font-size: 28px;
 }
+
+.status {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    color: white;
+}
+
+.status.en_attente {
+    background: orange;
+}
+
+.status.validee {
+    background: #3498db;
+}
+
+.status.livree {
+    background: #27ae60;
+}
+
+.status.annulee {
+    background: #e74c3c;
+}
+
+.btn.danger {
+    background-color: #e74c3c;
+}
+
+.btn.danger:hover {
+    background-color: #c0392b;
+}
+
+.detail-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 900px;
+    margin: auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.menu-description {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.menu-info p {
+    margin: 5px 0;
+}
+
+.menu-conditions {
+    margin-top: 25px;
+}
+
+.menu-plats {
+    margin-top: 25px;
+}
+
+.plat-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.allergenes {
+    margin-top: 5px;
+}
+
+.page-title {
+    text-align: center;
+    margin: 40px 0 20px;
+    font-size: 28px;
+}
+
+.form-container {
+    max-width: 500px;
+    margin: auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.form-container label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.form-container input,
+.form-container select,
+.form-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.btn-primary {
+    margin-top: 20px;
+    width: 100%;
+    background: #b97a2b;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background: #9c6423;
+}
+
+.dashboard-card {
+    max-width: 500px;
+    margin: 30px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.dashboard-actions {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-danger {
+    background: #e74c3c;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.btn-danger:hover {
+    background: #c0392b;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* centre horizontalement */
+    gap: 30px;
+    margin: 40px auto;
+    max-width: 1100px; /* limite la largeur */
+}
+
+.status-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-status {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: 0.2s ease;
+}
+
+.btn-status:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+/* Couleurs */
+.btn-validate { background: #b8792e; }
+.btn-prepa    { background: #f39c12; }
+.btn-livree   { background: #27ae60; }
+.btn-annule   { background: #e74c3c; }

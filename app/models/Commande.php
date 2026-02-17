@@ -27,30 +27,42 @@ class Commande
     // Commandes d’un utilisateur
     public function getByUser($idUser)
     {
-        $stmt = $this->pdo->prepare("
-            SELECT * FROM commande WHERE id_user = :id_user
-        ");
+    $stmt = $this->pdo->prepare("
+        SELECT c.*, m.titre
+        FROM commande c
+        JOIN menu m ON c.id_menu = m.id_menu
+        WHERE c.id_user = :id_user
+        ORDER BY c.date_commande DESC
+    ");
 
-        $stmt->execute(['id_user' => $idUser]);
-        return $stmt->fetchAll();
+    $stmt->execute(['id_user' => $idUser]);
+    return $stmt->fetchAll();
     }
 
     // Toutes les commandes
     public function getAll()
     {
-        return $this->pdo->query("SELECT * FROM commande")->fetchAll();
+        $stmt = $this->pdo->query("
+        SELECT c.*, m.titre
+        FROM commande c
+        JOIN menu m ON c.id_menu = m.id_menu
+        ORDER BY c.date_commande DESC
+        ");
+        
+        return $stmt->fetchAll();
     }
-
-    // Mise à jour du statut
     public function updateStatut($id, $statut)
     {
         $stmt = $this->pdo->prepare("
-            UPDATE commande SET statut = :statut WHERE id_commande = :id
+        UPDATE commande
+        SET statut = :statut
+        WHERE id_commande = :id
         ");
 
         return $stmt->execute([
-            'statut' => $statut,
-            'id' => $id
+        'statut' => $statut,
+        'id' => $id
         ]);
     }
+
 }

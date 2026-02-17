@@ -49,17 +49,16 @@ if ($page === 'home') {
 
 // 🧑‍💼 Page employé 
 if ($page === 'employe') {
-    requireRole(2);
+    requireMinRole(2);
 
-    echo "<h1>Espace Employé</h1>";
-    echo "<p>Gestion des commandes</p>";
-    echo "<a href='index.php?page=home'>Accueil</a>";
+    require __DIR__ . '/../app/views/employe/dashboard.php';
     exit;
 }
 
+
 // 👑 Page administrateur
 if ($page === 'admin') {
-    requireRole(3);
+    requireMinRole(3);
 
     echo "<h1>Espace Administrateur</h1>";
     echo "<p>Gestion des utilisateurs et statistiques</p>";
