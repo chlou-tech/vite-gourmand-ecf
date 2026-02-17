@@ -65,4 +65,56 @@ class Commande
         ]);
     }
 
+    // Chiffre d'affaire
+    public function revenueByMonth()
+    {
+        $stmt = $this->pdo->query("
+            SELECT 
+                DATE_FORMAT(date_commande, '%Y-%m') as mois,
+                SUM(prix_total) as total
+            FROM commande
+            WHERE statut != 'annulee'
+            GROUP BY mois
+            ORDER BY mois ASC
+        ");
+
+        return $stmt->fetchAll();
+    }
+
+    // Top 3 menus
+    public function topMenus()
+    {
+        $stmt = $this->pdo->query("
+            SELECT m.titre, COUNT(c.id_commande) as total
+            FROM commande c
+            JOIN menu m ON c.id_menu = m.id_menu
+            GROUP BY c.id_menu
+            ORDER BY total DESC
+            LIMIT 3
+        ");
+
+        return $stmt->fetchAll();
+    }
+
+    // Statistiques
+    public function getTotalRevenue()
+    {
+        $stmt = $this->pdo->query("
+            SELECT SUM(prix_total) as total 
+            FROM commande 
+            WHERE statut != 'annulee'
+        ");
+        return $stmt->fetch()['total'] ?? 0;
+    }
+
+    public function countByStatut()
+    {
+        $stmt = $this->pdo->query("
+            SELECT statut, COUNT(*) as total 
+            FROM commande 
+            GROUP BY statut
+        ");
+        return $stmt->fetchAll();
+    }
+
 }

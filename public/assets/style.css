@@ -31,10 +31,11 @@ section {
 }
 
 footer {
-    text-align: center;
-    padding: 20px;
     background: #ac6d25;
     color: white;
+    padding: 30px 20px;
+    margin-top: 40px;
+    text-align: center;
 }
 
 nav {
@@ -88,13 +89,6 @@ nav a:hover {
 
 .btn:hover {
     background-color: #1a242f;
-}
-
-footer {
-    background: #ac6d25;
-    color: white;
-    padding: 30px 20px;
-    margin-top: 40px;
 }
 
 .footer-container {
@@ -159,12 +153,6 @@ footer {
 
 .auth-form button {
     margin-top: 20px;
-}
-
-.page-title {
-    text-align: center;
-    margin: 40px 0 20px 0;
-    font-size: 28px;
 }
 
 .status {
@@ -297,18 +285,6 @@ footer {
     gap: 10px;
 }
 
-.btn-danger {
-    background: #e74c3c;
-    color: white;
-    padding: 10px;
-    border-radius: 8px;
-    text-decoration: none;
-}
-
-.btn-danger:hover {
-    background: #c0392b;
-}
-
 .cards-container {
     display: flex;
     flex-wrap: wrap;
@@ -347,3 +323,89 @@ footer {
 .btn-prepa    { background: #f39c12; }
 .btn-livree   { background: #27ae60; }
 .btn-annule   { background: #e74c3c; }
+
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px 80px 20px; /* 👈 espace gauche/droite */
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.button-group {
+    display: flex;
+    gap: 8px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.btn-small {
+    background: #b3732c;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 13px;
+    transition: 0.2s;
+}
+
+.btn-small:hover {
+    background: #925c21;
+}
+
+/* Carte utilisateur spécifique */
+.user-card {
+    position: relative;
+}
+
+/* En-tête utilisateur */
+.user-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Badge rôle */
+.role-badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+}
+
+/* Couleurs rôles */
+.badge-user {
+    background: #6c757d;
+}
+
+.badge-employee {
+    background: #0d6efd;
+}
+
+.badge-admin {
+    background: #dc3545;
+}
+
+/* Email */
+.user-email {
+    margin: 10px 0 15px 0;
+    color: #555;
+    font-size: 14px;
+}
+
+.btn-danger {
+    background: #dc3545;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.btn-danger:hover {
+    background: #a71d2a;
+}

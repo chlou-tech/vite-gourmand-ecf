@@ -9,6 +9,10 @@ require_once __DIR__ . '/../app/controllers/PlatController.php';
 require_once __DIR__ . '/../app/controllers/CommandeController.php';
 require_once __DIR__ . '/../app/controllers/AvisController.php';
 require_once __DIR__ . '/../app/controllers/ContactController.php';
+require_once __DIR__ . '/../app/controllers/UserController.php';
+require_once __DIR__ . '/../app/controllers/AdminController.php';
+
+
 
 $authController = new AuthController($pdo);
 $menuController = new MenuController($pdo);
@@ -16,6 +20,10 @@ $platController = new PlatController($pdo);
 $commandeController = new CommandeController($pdo);
 $avisController = new AvisController($pdo);
 $contactController = new ContactController();
+$userController = new UserController($pdo);
+$adminController = new AdminController($pdo);
+
+
 
 $page = $_GET['page'] ?? 'home';
 
@@ -59,12 +67,38 @@ if ($page === 'employe') {
 // 👑 Page administrateur
 if ($page === 'admin') {
     requireMinRole(3);
-
-    echo "<h1>Espace Administrateur</h1>";
-    echo "<p>Gestion des utilisateurs et statistiques</p>";
-    echo "<a href='index.php?page=home'>Accueil</a>";
+    require __DIR__ . '/../app/views/admin/index.php';
     exit;
 }
+
+
+// UTILISATEURS (admin uniquement)
+if ($page === 'users') {
+    requireMinRole(3);
+    $userController->index();
+    exit;
+}
+if ($page === 'user-update-role') {
+    $userController->updateRole();
+    exit;
+}
+
+// USERS
+if ($page === 'users') {
+    $userController->index();
+    exit;
+}
+
+if ($page === 'user-create') {
+    $userController->create();
+    exit;
+}
+
+if ($page === 'user-delete') {
+    $userController->delete();
+    exit;
+}
+
 
 // 🍽️ MENUS 
 if ($page === 'menus') {
@@ -149,6 +183,12 @@ if ($page === 'cgv') {
 // Contact
 if ($page === 'contact') {
     $contactController->index();
+    exit;
+}
+
+// Statistiques
+if ($page === 'stats') {
+    $adminController->stats();
     exit;
 }
 
