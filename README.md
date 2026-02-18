@@ -31,3 +31,10 @@ Elle permet :
 
 ```bash
 git clone https://github.com/chlou-tech/vite-gourmand-ecf.git
+```
+
+### Création de la base
+
+1. Créer une base nommée `vite_gourmand`
+2. Importer le fichier `database.sql`
+
