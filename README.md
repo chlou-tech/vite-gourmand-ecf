@@ -109,3 +109,11 @@ Placer le projet dans le dossier `htdocs` de XAMPP puis accéder à :
 ```bash
 http://localhost/Vite&Gourmand/public/index.php?page=home
 ```
+
+---
+
+## Application déployée
+
+Lien vers l’application en ligne :
+
+(https://ViteetGourmand.infinityfreeapp.com)
