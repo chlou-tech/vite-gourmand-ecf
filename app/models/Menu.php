@@ -38,8 +38,21 @@ class Menu
             (:titre, :description, :theme, :regime, :nb_personnes_min, :prix_base, :conditions, :stock, 1)
         ");
 
-        return $stmt->execute($data);
+        return $stmt->execute([
+            'titre' => $data['titre'],
+            'description' => $data['description'] ?? null,
+            'theme' => $data['theme'] ?? null,
+            'regime' => $data['regime'] ?? null,
+            'nb_personnes_min' => $data['nb_personnes_min'],
+            'prix_base' => $data['prix_base'],
+            'conditions' => $data['conditions'] ?? null,
+            'stock' => isset($data['stock']) && $data['stock'] !== '' 
+                ? (int)$data['stock'] 
+                : 0
+        ]);
+
     }
+
 
     // Filtrer les menus
     public function filter($filters)
