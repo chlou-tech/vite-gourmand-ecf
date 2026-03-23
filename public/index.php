@@ -11,6 +11,7 @@ require_once __DIR__ . '/../app/controllers/AvisController.php';
 require_once __DIR__ . '/../app/controllers/ContactController.php';
 require_once __DIR__ . '/../app/controllers/UserController.php';
 require_once __DIR__ . '/../app/controllers/AdminController.php';
+require_once __DIR__ . '/../app/models/Avis.php';
 
 
 

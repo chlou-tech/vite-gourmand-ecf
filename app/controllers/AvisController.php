@@ -1,5 +1,6 @@
 <?php
 
+require_once __DIR__ . '/../models/AvisNoSQL.php';
 require_once __DIR__ . '/../models/Avis.php';
 require_once __DIR__ . '/../models/Commande.php';
 
