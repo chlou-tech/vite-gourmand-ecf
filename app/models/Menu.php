@@ -55,34 +55,34 @@ class Menu
 
 
     // Filtrer les menus
-    public function filter($filters)
-{
-    $sql = "SELECT * FROM menu WHERE 1=1";
-    $params = [];
+    public function getFiltered($filters)
+    {
+        $sql = "SELECT * FROM menu WHERE actif = 1";
+        $params = [];
 
-    if (!empty($filters['prix_max'])) {
-        $sql .= " AND prix_base <= :prix_max";
-        $params['prix_max'] = $filters['prix_max'];
+        if (!empty($filters['prixMax'])) {
+            $sql .= " AND prix_base <= :prixMax";
+            $params['prixMax'] = $filters['prixMax'];
+        }
+
+        if (!empty($filters['theme'])) {
+            $sql .= " AND theme LIKE :theme";
+            $params['theme'] = '%' . $filters['theme'] . '%';
+        }
+
+        if (!empty($filters['regime'])) {
+            $sql .= " AND regime LIKE :regime";
+            $params['regime'] = '%' . $filters['regime'] . '%';
+        }
+
+        if (!empty($filters['nbPersonnes'])) {
+            $sql .= " AND nb_personnes_min <= :nbPersonnes";
+            $params['nbPersonnes'] = $filters['nbPersonnes'];
+        }
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($params);
+
+        return $stmt->fetchAll();
     }
-
-    if (!empty($filters['theme'])) {
-        $sql .= " AND theme = :theme";
-        $params['theme'] = $filters['theme'];
-    }
-
-    if (!empty($filters['regime'])) {
-        $sql .= " AND regime = :regime";
-        $params['regime'] = $filters['regime'];
-    }
-
-    if (!empty($filters['nb_personnes_min'])) {
-        $sql .= " AND nb_personnes_min >= :nb";
-        $params['nb'] = $filters['nb_personnes_min'];
-    }
-
-    $stmt = $this->pdo->prepare($sql);
-    $stmt->execute($params);
-
-    return $stmt->fetchAll();
-}
 }

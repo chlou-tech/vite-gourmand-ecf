@@ -14,11 +14,22 @@ class MenuController
     // Liste des menus
     public function index()
     {
-        if (!empty($_GET)) {
-            $menus = $this->menuModel->filter($_GET);
-            } else {
-                $menus = $this->menuModel->getAll();
-                }
+        $filters = [
+            'prixMax' => $_GET['prixMax'] ?? null,
+            'theme' => $_GET['theme'] ?? null,
+            'regime' => $_GET['regime'] ?? null,
+            'nbPersonnes' => $_GET['nbPersonnes'] ?? null
+        ];
+
+        $menus = $this->menuModel->getFiltered($filters);
+
+        // 🔥 AJOUT ICI
+        if (isset($_GET['ajax'])) {
+            require __DIR__ . '/../views/menus/_list.php';
+            exit;
+        }
+
+        // affichage normal
         require __DIR__ . '/../views/menus/index.php';
     }
 
