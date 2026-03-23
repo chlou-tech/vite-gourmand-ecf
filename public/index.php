@@ -14,7 +14,6 @@ require_once __DIR__ . '/../app/controllers/AdminController.php';
 require_once __DIR__ . '/../app/models/Avis.php';
 
 
-
 $authController = new AuthController($pdo);
 $menuController = new MenuController($pdo);
 $platController = new PlatController($pdo);
@@ -42,6 +41,11 @@ if ($page === 'login') {
 
 if ($page === 'register') {
     $authController->register();
+    exit;
+}
+
+if ($page === 'logout') {
+    $authController->logout();
     exit;
 }
 

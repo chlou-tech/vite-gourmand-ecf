@@ -1,8 +1,7 @@
-version: '3.8'
 
 services:
   web:
-    image: php:8.2-apache
+    build: .
     container_name: vite_gourmand_web
     ports:
       - "8000:80"

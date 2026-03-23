@@ -2,7 +2,8 @@
 <html>
 <head>
     <title>Vite & Gourmand</title>
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
 </head>
 <body>
 
@@ -30,7 +31,7 @@
                 <a href="index.php?page=admin">Espace admin</a>
             <?php endif; ?>
 
-            <a href="logout.php">Déconnexion</a>
+            <a href="index.php?page=logout">Déconnexion</a>
 
         <?php else: ?>
 
