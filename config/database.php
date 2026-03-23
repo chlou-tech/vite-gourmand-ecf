@@ -1,6 +1,6 @@
 <?php
 
-$host = 'localhost';
+$host = 'db';
 $dbname = 'vite_gourmand';
 $user = 'root';
 $pass = '';
