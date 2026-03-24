@@ -25,12 +25,9 @@ L’application distingue trois rôles :
 
 | Rôle          | Email                                     | Mot de passe |
 | ------------- | ----------------------------------------- | ------------ |
-| 👑 Admin      | [admin@test.fr](mailto:admin@test.fr)     | admin123     |
+| 👑 Admin      | [admin@test.fr](mailto:admin@test.fr)     | test123     |
 | 👨‍🍳 Employé | [employe@test.fr](mailto:employe@test.fr) | employe123   |
 | 👤 Client     | [user@test.fr](mailto:user@test.fr)       | user123      |
-
-
-(Adapter avec tes vrais mots de passe)
 
 ---
 
@@ -192,3 +189,4 @@ http://localhost/Vite&Gourmand/public/index.php?page=home
 - Application déployée
 
 - Documentation technique (à fournir séparément)
+
