@@ -409,3 +409,33 @@ nav a:hover {
 .btn-danger:hover {
     background: #a71d2a;
 }
+
+/* ===== HEADER AVEC LOGO ===== */
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+/* NAV prend tout l'espace */
+.header nav {
+    display: flex;
+    gap: 15px;
+}
+
+/* 👉 pousse le logo complètement à droite */
+.logo-container {
+    margin-left: auto;
+}
+
+.logo {
+    position: absolute;
+    right: 30px;
+    top: 20px;
+    height: 130px;
+}

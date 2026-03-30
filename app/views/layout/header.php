@@ -41,4 +41,10 @@
         <?php endif; ?>
 
     </nav>
+    
+    <div class="logo-container">
+        <a href="index.php?page=home">
+            <img src="images/logo.png" class="logo">
+        <a>
+    </div>
 </header>
