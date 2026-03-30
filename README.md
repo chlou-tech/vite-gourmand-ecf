@@ -168,7 +168,7 @@ L’application peut être lancée via Docker afin de garantir un environnement 
   `docker compose up -d`
 
 → L’application sera accessible sur :
-`http://localhost:8000`
+http://localhost:8000
 
 ### 🗄️ Importer la base de données
 
