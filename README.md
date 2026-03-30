@@ -156,6 +156,40 @@ http://localhost/Vite&Gourmand/public/index.php?page=home
 
 ---
 
+## Lancement avec Docker
+
+L’application peut être lancée via Docker afin de garantir un environnement de développement identique sur toutes les machines.
+
+### 📦 Prérequis
+- Docker
+- Docker Compose
+
+🚀 Lancer les containers :
+  `docker compose up -d`
+
+→ L’application sera accessible sur :
+http://localhost:8000
+
+### 🗄️ Importer la base de données
+
+⚠️ Important : l’import doit être réalisé depuis le container pour éviter les problèmes d’encodage.
+
+`docker cp database.sql vite_gourmand_db:/database.sql`
+
+Puis :
+
+`docker exec -it vite_gourmand_db mysql -uroot -proot vite_gourmand -e "source /database.sql"`
+
+🛑 Arrêter les containers :
+`docker compose down`
+
+♻️ Réinitialiser complètement la base :
+```bash
+docker compose down -v
+docker compose up -d
+```
+---
+
 ## 🔐 Sécurité mise en place
 
 - Utilisation de PDO avec requêtes préparées
