@@ -1,14 +1,13 @@
 <?php
 
-$host = $_ENV['MYSQLHOST'] ?? 'localhost';
-$dbname = $_ENV['MYSQLDATABASE'] ?? 'vite_gourmand';
-$username = $_ENV['MYSQLUSER'] ?? 'root';
-$password = $_ENV['MYSQLPASSWORD'] ?? '';
-$port = $_ENV['MYSQLPORT'] ?? 3306;
+$host = 'mysql.railway.internal';
+$dbname = 'railway';
+$username = 'root';
+$password = 'CHSHcysAbsCSoWVLowetwfDevrYTYWvh';
 
 try {
     $pdo = new PDO(
-        "mysql:host=$host;port=$port;dbname=$dbname;charset=utf8",
+        "mysql:host=$host;dbname=$dbname;charset=utf8",
         $username,
         $password
     );
