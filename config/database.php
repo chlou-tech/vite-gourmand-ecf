@@ -1,28 +1,19 @@
 <?php
 
-$host = 'db';
-$dbname = 'vite_gourmand';
-$username = 'root';
-$password = 'root';
+$host = $_ENV['MYSQLHOST'] ?? 'localhost';
+$dbname = $_ENV['MYSQLDATABASE'] ?? 'vite_gourmand';
+$username = $_ENV['MYSQLUSER'] ?? 'root';
+$password = $_ENV['MYSQLPASSWORD'] ?? '';
+$port = $_ENV['MYSQLPORT'] ?? 3306;
 
-$maxAttempts = 5;
-$attempt = 0;
-
-while ($attempt < $maxAttempts) {
-    try {
-        $pdo = new PDO(
-            "mysql:host=$host;dbname=$dbname;charset=utf8mb4",
-            $username,
-            $password
-        );
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        break; // connexion OK
-    } catch (PDOException $e) {
-        $attempt++;
-        sleep(2); // attend 2 secondes avant retry
-    }
+try {
+    $pdo = new PDO(
+        "mysql:host=$host;port=$port;dbname=$dbname;charset=utf8",
+        $username,
+        $password
+    );
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die('Erreur connexion BDD : ' . $e->getMessage());
 }
 
-if (!isset($pdo)) {
-    die('Erreur connexion BDD : impossible de se connecter après plusieurs tentatives.');
-}
