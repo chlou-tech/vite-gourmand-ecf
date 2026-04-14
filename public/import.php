@@ -1,6 +1,6 @@
 <?php
 
-require_once 'config/database.php';
+require_once '../config/database.php';
 
 try {
     $sql = file_get_contents('database.sql');
