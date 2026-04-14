@@ -13,7 +13,7 @@ function hasRole($roleId)
 function requireLogin()
 {
     if (!isLoggedIn()) {
-        header('Location: index.php?page=login');
+        header('Location: /?page=login');
         exit;
     }
 }

@@ -55,7 +55,7 @@ class PlatController
                     }
             }
 
-            header('Location: index.php?page=plats');
+            header('Location: /?page=plats');
             exit;
         }
 

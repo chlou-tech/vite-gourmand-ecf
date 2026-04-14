@@ -40,7 +40,7 @@ class CommandeController
                 'id_menu' => $_POST['id_menu']
             ]);
 
-            header('Location: index.php?page=mes-commandes');
+            header('Location: /?page=mes-commandes');
             exit;
         }
 
@@ -88,7 +88,7 @@ class CommandeController
 
     $this->commandeModel->updateStatut($id, $statut);
 
-    header('Location: index.php?page=all-commandes');
+    header('Location: /?page=all-commandes');
     exit;
 }
 
@@ -113,7 +113,7 @@ public function annuler()
         }
     }
 
-    header('Location: index.php?page=mes-commandes');
+    header('Location: /?page=mes-commandes');
     exit;
 }
 

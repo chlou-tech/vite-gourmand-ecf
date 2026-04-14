@@ -29,7 +29,7 @@ $page = $_GET['page'] ?? 'home';
 
 // 🔁 Si déjà connecté et essaie d’aller sur login/register → home
 if (isset($_SESSION['user']) && in_array($page, ['login', 'register'])) {
-    header('Location: index.php?page=home');
+    header('Location: /?page=home');
     exit;
 }
 
@@ -198,5 +198,5 @@ if ($page === 'stats') {
 }
 
 // 🧭 Par défaut
-header('Location: index.php?page=login');
+header('Location: /?page=login');
 exit;

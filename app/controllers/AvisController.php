@@ -33,7 +33,7 @@ class AvisController
                 'id_commande' => $idCommande
             ]);
 
-            header('Location: index.php?page=mes-commandes');
+            header('Location: /?page=mes-commandes');
             exit;
         }
 
@@ -59,7 +59,7 @@ class AvisController
             $this->avisModel->validate($id, $status);
         }
 
-        header('Location: index.php?page=all-avis');
+        header('Location: /?page=all-avis');
         exit;
     }
 

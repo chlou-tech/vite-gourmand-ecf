@@ -30,7 +30,7 @@ class UserController
             $this->userModel->updateRole($id, $role);
         }
 
-        header('Location: index.php?page=users');
+        header('Location: /?page=users');
         exit;
     }
 
@@ -51,7 +51,7 @@ class UserController
                 'id_role' => $_POST['id_role']
             ]);
 
-        header('Location: index.php?page=users');
+        header('Location: /?page=users');
         exit;
         }
 
@@ -66,7 +66,7 @@ class UserController
         $id = $_GET['id'] ?? null;
 
         if (!$id) {
-            header('Location: index.php?page=users');
+            header('Location: /?page=users');
             exit;
         }
 
@@ -92,7 +92,7 @@ class UserController
 
     $this->userModel->delete($id);
 
-    header('Location: index.php?page=users');
+    header('Location: /?page=users');
     exit;
 }
 

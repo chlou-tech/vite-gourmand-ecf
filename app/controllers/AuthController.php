@@ -39,7 +39,7 @@ class AuthController
                 'role' => $user['id_role']
             ];
 
-            header('Location: /Vite&Gourmand/public/index.php');
+            header('Location: /index.php');
             exit;
         }
 
@@ -85,7 +85,7 @@ public function register()
             'mot_de_passe' => $hashedPassword
         ]);
 
-        header('Location: /Vite&Gourmand/public/index.php?page=login');
+        header('Location: /?page=login');
         exit;
     }
 
@@ -97,7 +97,7 @@ public function logout()
     $_SESSION = [];
     session_destroy();
 
-    header('Location: index.php?page=login');
+    header('Location: /?page=login');
     exit;
 }
 }

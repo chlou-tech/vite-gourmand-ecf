@@ -54,7 +54,7 @@ class MenuController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->menuModel->create($_POST);
-            header('Location: index.php?page=menus');
+            header('Location: /?page=menus');
             exit;
         }
 
